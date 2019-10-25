@@ -6,10 +6,10 @@ spring:
   resources:
     add-mappings: false
   redis:
-    host: xxx
-    port: 6688
+    host: 127.0.0.1
+    port: 6379
     database: 0
-    password: xxx
+    password: 
     timeout: 3000
     jedis:
       pool:
@@ -18,7 +18,7 @@ spring:
         min-idle: 1
         max-wait: 5000
 logging:
-  path: /opt/java_logs/blockchain
+  path: ./blockchain
   file:
     max-size: 100MB
     max-history: 365

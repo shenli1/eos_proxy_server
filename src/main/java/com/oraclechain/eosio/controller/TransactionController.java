@@ -1,6 +1,8 @@
 package com.oraclechain.eosio.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.oraclechain.eosio.chain.PackedTransaction;
 import com.oraclechain.eosio.chain.SignedTransaction;
@@ -30,6 +32,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -42,6 +46,45 @@ public class TransactionController {
     @Resource
     private BlockServiceEos blockServiceEos;
 
+    //Get information related to an account.
+    @CrossOrigin
+    @GetMapping("get_account_info")
+    public MessageResult get_account_info(@RequestParam(value = "account_name", required = true) String accountName) throws Exception {
+    	log.info("[get_account_info]" + accountName);
+    	Map<String,String> postMap = new HashMap<String,String>();
+    	postMap.put("account_name", accountName);
+        String result= HttpClientUtils.ocPost(Variables.eosChainUrl+ "get_account", JSON.toJSONString(postMap));
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        Map<String,Object> map = (Map<String,Object>)jsonObject;
+        String eosBalance = "0 EOS";
+        if (map.containsKey("core_liquid_balance")){
+        	eosBalance = map.get("core_liquid_balance").toString();
+        }
+        String cpuWeight = map.get("cpu_weight").toString();
+        String netWeight = map.get("net_weight").toString();
+        AccountDetailsBean accountDetail = new AccountDetailsBean();
+        accountDetail.setAccount_icon("");
+        accountDetail.setAccount_name(map.get("account_name").toString());
+        accountDetail.setEos_balance(eosBalance);
+        accountDetail.setEos_balance_cny(eosBalance);
+        accountDetail.setEos_balance_usd(eosBalance);
+        accountDetail.setEos_cpu_weight(cpuWeight);
+        accountDetail.setEos_market_cap_cny(eosBalance);
+        accountDetail.setEos_market_cap_usd(eosBalance);
+        accountDetail.setEos_net_weight(netWeight);
+        accountDetail.setEos_price_change_in_24h("1");
+        accountDetail.setEos_price_cny("1");
+        accountDetail.setEos_price_usd("1");
+        accountDetail.setOct_balance("0 OCT");
+        accountDetail.setOct_balance_cny("1");
+        accountDetail.setOct_balance_usd("1");
+        accountDetail.setOct_market_cap_cny("1");
+        accountDetail.setOct_market_cap_usd("1");
+        accountDetail.setOct_price_change_in_24h("1");
+        accountDetail.setOct_price_cny("1");
+        accountDetail.setOct_price_usd("1");
+        return MessageResult.success(accountDetail);
+    }
 
     //This method expects a transaction in JSON format and will attempt to apply it to the api.
     @CrossOrigin
@@ -113,19 +156,22 @@ public class TransactionController {
                                         @RequestParam(value = "active_key", required = true) String active_key,
                                         @RequestParam(value = "owner_key", required = true) String owner_key,
                                         @RequestParam(value = "nonce", required = true) String nonce) throws Exception {
-
+    	/*
         //参数检查
         if (nonce.length() != 32 || active_key.length() != 53  || owner_key.length() != 53 ) {
             throw new ExceptionsChain(ErrorCodeEnumChain.request_format_exception);
         }
+        */
 
-
+        
+        /*
         //对Personal服务器nonce验证
         String redis_key = Variables.redisKeyPrefixPersonalHead + Variables.redisKeyPrefixPersonalTailFreeAccount;
         String redis_value = redisService.get(redis_key);
         if (!nonce.equals(redis_value) || redis_value == null) {
             throw new ExceptionsChain(ErrorCodeEnumChain.request_validation_exception);
         }
+        */
 
         //创建账号交易
         StringBuilder url = new StringBuilder();

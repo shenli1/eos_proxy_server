@@ -1,10 +1,16 @@
 package com.oraclechain.eosio.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.oraclechain.eosio.constants.Variables;
 import com.oraclechain.eosio.dto.*;
 import com.oraclechain.eosio.utils.EosErrorUtils;
 import com.oraclechain.eosio.utils.HttpClientUtils;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -70,6 +76,8 @@ public class ChainController {
         String result= HttpClientUtils.ocPost(Variables.eosChainUrl+ "get_account", body );
         return EosErrorUtils.handleEosResponse(result, "get_account");
     }
+    
+
 
 
     //Fetch smart contract data from an account.

@@ -34,16 +34,16 @@ public final class Variables {
     public static final String redisKeyPrefixPersonalHead = "Personal:";
     public static final String redisKeyEosCoinmarketcapMid = "ExchangeRate";
     public static final String redisKeyEosNewdexMid = "NewdexTicker";
-    public static final String redisKeyPrefixPersonalTailFreeAccount = "xxx";
-    public static final String redisKeyPrefixPersonalTailVipAccount = "xxx";
+    public static final String redisKeyPrefixPersonalTailFreeAccount = "free";
+    public static final String redisKeyPrefixPersonalTailVipAccount = "vip";
 
     //chain
-    public static final String eosChainUrl = "http://api.oraclechain.io/v1/chain/";
-    public static final String eosHistoryUrl = "http://api.oraclechain.io/v1/history/";
-    public static final String eosAccount = "octgenerator";
-    public static final String eosPrivateKey = "xxx";
-    public static final String eosAccountVip = "vipgenerator";
-    public static final String eosPrivateKeyVip = "xxx";
+    public static final String eosChainUrl = "http://jungle2.cryptolions.io/v1/chain/";
+    public static final String eosHistoryUrl = "http://jungle2.cryptolions.io/v1/history/";
+    public static final String eosAccount = "generatormaa";
+    public static final String eosPrivateKey = "5K2Mai89y6G4hH1szCiBBV8zswrZSpxPnHFZVwYBYGuTb5f62jo";
+    public static final String eosAccountVip = "generatormaa";
+    public static final String eosPrivateKeyVip = "5K2Mai89y6G4hH1szCiBBV8zswrZSpxPnHFZVwYBYGuTb5f62jo";
 
     public static final Integer SYSTEM_CONTRACT_BUYRAM_BYSIZE = 4000;
     public static final String SYSTEM_CONTRACT_DELEGATEBW_NET_BYEOS = "0.0050 EOS";
