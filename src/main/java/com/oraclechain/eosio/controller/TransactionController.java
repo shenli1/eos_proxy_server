@@ -60,6 +60,7 @@ public class TransactionController {
         if (map.containsKey("core_liquid_balance")){
         	eosBalance = map.get("core_liquid_balance").toString();
         }
+        eosBalance = eosBalance.split(" ")[0];
         String cpuWeight = map.get("cpu_weight").toString();
         String netWeight = map.get("net_weight").toString();
         AccountDetailsBean accountDetail = new AccountDetailsBean();
@@ -75,7 +76,7 @@ public class TransactionController {
         accountDetail.setEos_price_change_in_24h("1");
         accountDetail.setEos_price_cny("1");
         accountDetail.setEos_price_usd("1");
-        accountDetail.setOct_balance("0 OCT");
+        accountDetail.setOct_balance("0");
         accountDetail.setOct_balance_cny("1");
         accountDetail.setOct_balance_usd("1");
         accountDetail.setOct_market_cap_cny("1");

@@ -45,7 +45,9 @@ public class ChainController {
     @PostMapping("get_required_keys")
     public MessageResult get_required_keys(@RequestBody String body) throws Exception {
 
+        log.info("[get_required_keys] " + body);
         String result= HttpClientUtils.ocPost(Variables.eosChainUrl+ "get_required_keys", body );
+        log.info("[get_required_keys]" + result);
         return EosErrorUtils.handleEosResponse(result, "get_required_keys");
     }
 
