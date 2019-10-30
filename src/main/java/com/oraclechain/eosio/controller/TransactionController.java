@@ -135,6 +135,7 @@ public class TransactionController {
     @PostMapping("push_transaction")
     public MessageResult push_transaction(@RequestBody String body) throws Exception {
 
+        log.info("[push_transaction]" + body);
         String result= HttpClientUtils.ocPost( Variables.eosChainUrl+ "push_transaction", body);
         return EosErrorUtils.handleEosResponse(result, "push_transaction");
     }
@@ -256,7 +257,9 @@ public class TransactionController {
                 Variables.conTimeOut,
                 Variables.reqTimeOut
         );
-        return EosErrorUtils.handleEosResponse(result, "create_account");
+        //return EosErrorUtils.handleEosResponse(result, "create_account");
+        log.info("[create_account] result : " + result);
+        return MessageResult.success(result,0);
     }
 
 
