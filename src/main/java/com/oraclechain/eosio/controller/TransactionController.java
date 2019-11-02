@@ -258,8 +258,11 @@ public class TransactionController {
                 Variables.reqTimeOut
         );
         //return EosErrorUtils.handleEosResponse(result, "create_account");
+        if( result.contains("Account name already exists") ){
+            return MessageResult.error(result,500);
+        }
         log.info("[create_account] result : " + result);
-        return MessageResult.success(result,0);
+        return MessageResult.success(result,200);
     }
 
 

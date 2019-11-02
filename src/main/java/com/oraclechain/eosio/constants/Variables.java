@@ -38,16 +38,16 @@ public final class Variables {
     public static final String redisKeyPrefixPersonalTailVipAccount = "vip";
 
     //chain
-    public static final String eosChainUrl = "http://jungle2.cryptolions.io/v1/chain/";
-    public static final String eosHistoryUrl = "http://jungle2.cryptolions.io/v1/history/";
-    public static final String eosAccount = "generatormaa";
-    public static final String eosPrivateKey = "5K2Mai89y6G4hH1szCiBBV8zswrZSpxPnHFZVwYBYGuTb5f62jo";
-    public static final String eosAccountVip = "generatormaa";
-    public static final String eosPrivateKeyVip = "5K2Mai89y6G4hH1szCiBBV8zswrZSpxPnHFZVwYBYGuTb5f62jo";
+    public static final String eosChainUrl = "http://120.77.86.18:8000/v1/chain/";
+    public static final String eosHistoryUrl = "http://120.77.86.18:8000/v1/history/";
+    public static final String eosAccount = "cctcreator11";
+    public static final String eosPrivateKey = "5KfxVMTc5breR9B37v4ehxLTpYP5Y9x8gzHWMoVbWNJZDbYcyMV";
+    public static final String eosAccountVip = "cctcreator11";
+    public static final String eosPrivateKeyVip = "5KfxVMTc5breR9B37v4ehxLTpYP5Y9x8gzHWMoVbWNJZDbYcyMV";
 
     public static final Integer SYSTEM_CONTRACT_BUYRAM_BYSIZE = 4000;
-    public static final String SYSTEM_CONTRACT_DELEGATEBW_NET_BYEOS = "0.0050 EOS";
-    public static final String SYSTEM_CONTRACT_DELEGATEBW_CPU_BYEOS = "0.0400 EOS";
+    public static final String SYSTEM_CONTRACT_DELEGATEBW_NET_BYEOS = "0.0050 CCT";
+    public static final String SYSTEM_CONTRACT_DELEGATEBW_CPU_BYEOS = "0.0400 CCT";
     public static final Boolean SYSTEM_CONTRACT_DELEGATEBW_ISTRANSFER = false;
 
 }
