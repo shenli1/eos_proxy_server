@@ -2,6 +2,7 @@ package com.oraclechain.eosio.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.JsonElement;
 import com.oraclechain.eosio.constants.Variables;
 import com.oraclechain.eosio.dto.*;
 import com.oraclechain.eosio.utils.EosErrorUtils;
@@ -75,7 +76,11 @@ public class ChainController {
     @PostMapping("get_account")
     public MessageResult get_account(@RequestBody String body) throws Exception {
 
-        String result= HttpClientUtils.ocPost(Variables.eosChainUrl+ "get_account", body );
+        log.info("[get_account]" + body);
+        String accountName = body.split("=")[1];
+        Map<String,String> params = new HashMap<String,String>();
+        params.put("account_name",accountName);
+        String result= HttpClientUtils.ocPost(Variables.eosChainUrl+ "get_account", JSON.toJSONString(params));
         return EosErrorUtils.handleEosResponse(result, "get_account");
     }
     
